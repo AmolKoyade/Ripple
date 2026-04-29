@@ -1,309 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-      content="RIPPLE — Frictionless hydration tracking app. Dark-first, bioluminescent UI with one-tap logging and smart notifications." />
-    <meta property="og:title" content="RIPPLE · Water Tracking App" />
-    <meta property="og:description"
-      content="Minimalist hydration companion. One tap. Smart nudges. Never miss your daily goal." />
-    <meta property="og:type" content="website" />
-    <title>RIPPLE — Water Tracking App · Product Brief</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#06090F">
+    <title>RIPPLE</title>
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/animations.css" />
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
+        <header class="app-header">
+            <h1 class="app-name">RIPPLE</h1>
+        </header>
 
-      <!-- ── HERO ── -->
-      <header class="hero">
-        <div class="hero-left">
-          <div class="app-icon">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-              <path d="M13 2C13 2 6 13 6 18a7 7 0 0014 0C20 13 13 2 13 2Z"
-                fill="white" />
-            </svg>
-          </div>
-          <div>
-            <div class="hero-title-row">
-              <h1 class="app-name">RIPPLE</h1>
-              <span class="version-tag">Product Brief · v1.0</span>
-            </div>
-            <p class="app-sub">Frictionless hydration tracking · dark-first ·
-              bioluminescent UI</p>
-          </div>
-        </div>
-        <div class="badges">
-          <span class="badge">iOS 17+</span>
-          <span class="badge">Android 14+</span>
-          <span class="badge">HealthKit sync</span>
-          <span class="badge">SwiftUI / Compose</span>
-        </div>
-      </header>
-
-      <!-- ── MAIN GRID ── -->
-      <section class="main-grid">
-
-        <!-- Phone Mockup -->
-        <div class="phone-wrap">
-          <div class="phone">
-            <div class="phone-statusbar">
-              <span class="phone-time">9:41</span>
-              <div class="phone-icons">
-                <svg width="16" height="11" viewBox="0 0 16 11">
-                  <rect x="0" y="8" width="2.5" height="3" rx=".5"
-                    fill="#8892A4" />
-                  <rect x="4.5" y="5.5" width="2.5" height="5.5" rx=".5"
-                    fill="#8892A4" />
-                  <rect x="9" y="3" width="2.5" height="8" rx=".5"
-                    fill="#8892A4" />
-                  <rect x="13.5" y="0" width="2.5" height="11" rx=".5"
-                    fill="#8892A4" />
-                </svg>
-                <svg width="23" height="11" viewBox="0 0 23 11">
-                  <rect x=".5" y=".5" width="19" height="10" rx="2"
-                    stroke="#8892A4" stroke-width="1" fill="none" />
-                  <rect x="1.5" y="1.5" width="13" height="8" rx="1"
-                    fill="#00B4D8" />
-                  <rect x="20" y="3.5" width="2.5" height="4" rx="1"
-                    fill="#8892A4" />
-                </svg>
-              </div>
-            </div>
-            <div class="phone-header">
-              <div>
-                <div class="phone-day">THURSDAY</div>
-                <div class="phone-greeting">Good morning</div>
-              </div>
-              <div class="avatar-btn">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                  <circle cx="6.5" cy="4.5" r="2.5" stroke="#8892A4"
-                    stroke-width="1.1" />
-                  <path d="M1.5 11.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="#8892A4"
-                    stroke-width="1.1" stroke-linecap="round" />
-                </svg>
-              </div>
-            </div>
-            <div class="wave-wrap">
-              <div class="wave-circle" id="waveCircle">
-                <div class="wave-fill" id="waveFill">
-                  <svg class="wave-svg" width="280" height="18"
-                    viewBox="0 0 280 18">
-                    <path
-                      d="M0 9 Q35 0 70 9 Q105 18 140 9 Q175 0 210 9 Q245 18 280 9 L280 18 L0 18 Z"
-                      fill="#005C8A" />
-                  </svg>
-                  <div class="wave-body"></div>
+        <main class="main-grid">
+            <div class="phone-ui">
+                <div class="wave-wrap">
+                    <div class="wave-circle">
+                        <div class="wave-fill" id="waveFill">
+                            <svg class="wave-svg" width="280" height="18" viewBox="0 0 280 18">
+                                <path d="M0 9 Q35 0 70 9 Q105 18 140 9 Q175 0 210 9 Q245 18 280 9 L280 18 L0 18 Z" fill="#005C8A" />
+                            </svg>
+                            <div class="wave-body"></div>
+                        </div>
+                        <div class="wave-label">
+                            <div class="wave-pct" id="pctText">0%</div>
+                            <div class="wave-ml" id="mlText">0 ml</div>
+                            <div class="wave-goal">of 2,500 ml</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="wave-shimmer" id="waveShimmer"></div>
-                <div class="wave-label">
-                  <div class="wave-pct" id="pctText">65%</div>
-                  <div class="wave-ml" id="mlText">1,625 ml</div>
-                  <div class="wave-goal">of 2,500 ml</div>
+
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <div class="stat-val" id="remStat">2,500 ml</div>
+                        <div class="stat-lbl">remaining</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-val" id="glassStat">0</div>
+                        <div class="stat-lbl">glasses</div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="quick-stats">
-              <div class="stat-item">
-                <div class="stat-val" id="remStat">875 ml</div>
-                <div class="stat-lbl">remaining</div>
-              </div>
-              <div class="stat-divider"></div>
-              <div class="stat-item">
-                <div class="stat-val" id="glassStat">5</div>
-                <div class="stat-lbl">glasses</div>
-              </div>
-              <div class="stat-divider"></div>
-              <div class="stat-item">
-                <div class="stat-val">7 h</div>
-                <div class="stat-lbl">on track</div>
-              </div>
-            </div>
-            <div class="log-btn-wrap">
-              <button class="log-btn" id="logBtn">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                  <path
-                    d="M6.5 1C6.5 1 3.5 6 3.5 8a3 3 0 006 0C9.5 6 6.5 1 6.5 1Z"
-                    fill="white" />
-                </svg>
-                + Log 250 ml
-              </button>
-            </div>
-            <div class="recent-label">RECENT</div>
-            <div id="logList">
-              <div class="log-entry"><span>250 ml</span><span>2:45
-                  PM</span></div>
-              <div class="log-entry"><span>330 ml</span><span>1:10
-                  PM</span></div>
-              <div class="log-entry"><span>500 ml</span><span>11:30
-                  AM</span></div>
-            </div>
-          </div>
-          <p class="phone-caption">Main screen — tap Log to interact</p>
-        </div>
 
-        <!-- Feature Cards -->
-        <div class="features-col">
-          <h2 class="section-title">Product overview</h2>
-          <p class="section-desc">RIPPLE is a minimalist hydration companion
-            built around one principle: the best health app is the one you
-            actually use. By stripping away every layer of friction — from
-            logging to reminders — it fits invisibly into daily life without
-            demanding attention.</p>
-          <div class="features" id="features"></div>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <!-- SPEC CARDS -->
-      <section>
-        <h2 class="section-title">Feature specifications</h2>
-        <div class="spec-grid" id="specGrid"></div>
-      </section>
-
-      <div class="divider"></div>
-
-      <!-- ACTIVE HOURS -->
-      <section>
-        <h2 class="section-title">Active hours visualizer</h2>
-        <p class="section-desc">Drag the sliders to configure the active window.
-          Notifications are strictly silenced outside the blue zone — your sleep
-          is never interrupted.</p>
-        <div class="ah-panel">
-          <div class="ah-bar-wrap">
-            <div class="ah-fill" id="ahBar"></div>
-            <div class="ah-now"></div>
-            <div class="ah-grid">
-              <div></div><div></div><div></div><div></div>
-              <div></div><div></div><div></div><div></div>
-              <div></div><div></div><div></div><div></div>
-            </div>
-          </div>
-          <div class="ah-hours-row">
-            <span>12 AM</span><span>3</span><span>6</span><span>9</span>
-            <span>12 PM</span><span>3</span><span>6</span><span>9</span><span>12
-              AM</span>
-          </div>
-          <div class="ah-sliders">
-            <div class="ah-slider-wrap">
-              <label class="ah-slider-label">Wake time — <span id="wakeLbl">7:00
-                  AM</span></label>
-              <input type="range" min="0" max="12" value="7" step=".5"
-                id="wakeSl" />
-            </div>
-            <div class="ah-slider-wrap">
-              <label class="ah-slider-label">Sleep time — <span
-                  id="sleepLbl">10:00 PM</span></label>
-              <input type="range" min="12" max="24" value="22" step=".5"
-                id="sleepSl" />
-            </div>
-          </div>
-          <div class="ah-status" id="ahStatus"></div>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <!-- ALGORITHM -->
-      <section>
-        <h2 class="section-title">Remaining goal algorithm — live preview</h2>
-        <p class="section-desc">The nudge engine calculates the next
-          notification interval from two live inputs. Adjust to see how urgency
-          shifts in real time.</p>
-        <div class="alg-panel">
-          <div class="alg-metrics">
-            <div class="metric-card">
-              <div class="metric-lbl">REMAINING</div>
-              <div class="metric-val" id="algRem">875 ml</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-lbl">HOURS LEFT</div>
-              <div class="metric-val" id="algHrs">7.5 h</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-lbl">NEXT NUDGE</div>
-              <div class="metric-val accent" id="algNudge">72 min</div>
-            </div>
-          </div>
-          <div class="alg-sliders">
-            <div class="alg-row">
-              <label>Remaining (ml)</label>
-              <input type="range" min="0" max="2500" value="875" step="25"
-                id="algR" />
-              <span class="out" id="algROut">875</span>
-            </div>
-            <div class="alg-row">
-              <label>Hours left</label>
-              <input type="range" min=".5" max="15" value="7.5" step=".5"
-                id="algH" />
-              <span class="out" id="algHOut">7.5 h</span>
-            </div>
-          </div>
-          <div class="alg-note" id="algNote"></div>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <!-- NOTIFICATIONS -->
-      <section>
-        <h2 class="section-title">Notification design</h2>
-        <div class="notif-grid">
-          <div class="notif-panel">
-            <div class="panel-label">LOCK SCREEN NOTIFICATION</div>
-            <div class="lock-screen">
-              <div class="notif-header">
-                <div class="notif-icon">
-                  <svg width="12" height="12" viewBox="0 0 12 12"
-                    fill="none"><path
-                      d="M6 1C6 1 3 5.5 3 7.5a3 3 0 006 0C9 5.5 6 1 6 1Z"
-                      fill="white" /></svg>
+                <div class="log-btn-wrap">
+                    <button class="log-btn" id="logBtn">+ Log 250 ml</button>
                 </div>
-                <div>
-                  <div class="notif-app">RIPPLE</div>
-                  <div class="notif-time">now</div>
+
+                <div class="history-section">
+                    <div class="recent-label">RECENT ACTIVITY</div>
+                    <div id="logList"></div>
                 </div>
-              </div>
-              <div class="notif-title">Time for a sip</div>
-              <div class="notif-body">875 ml remaining · 7.5 hrs left today.
-                You've got this.</div>
-              <div class="notif-actions">
-                <div class="notif-action-primary">+ Log 250 ml</div>
-                <div class="notif-action-dismiss">Dismiss</div>
-              </div>
             </div>
-          </div>
-          <div class="notif-panel">
-            <div class="panel-label">CONTEXTUAL COPY VARIANTS</div>
-            <div class="copy-variants" id="copyVariants"></div>
-          </div>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <!-- DESIGN TOKENS -->
-      <section>
-        <h2 class="section-title">Design tokens</h2>
-        <div class="tokens-grid" id="tokensGrid"></div>
-        <div class="typo-grid" id="typoGrid"></div>
-      </section>
-
-      <footer class="footer">
-        <strong>RIPPLE</strong> · Product Brief v1.0 · Concept design
-      </footer>
-
+        </main>
     </div>
-
     <script src="js/data.js"></script>
     <script src="js/phone.js"></script>
-    <script src="js/activeHours.js"></script>
-    <script src="js/algorithm.js"></script>
-    <script src="js/render.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+</body>
 </html>

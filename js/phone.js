@@ -1,70 +1,54 @@
-/* ── PHONE MOCKUP INTERACTION ── */
-
 (function () {
-  const GOAL    = RIPPLE.GOAL;
-  const LOG_AMT = RIPPLE.LOG_AMT;
+    const GOAL = 2500;
+    const LOG_AMT = 250;
 
-  let totalLogged = 1625;
-  let glassCount  = 5;
+    // Persistent storage
+    let totalLogged = parseInt(localStorage.getItem('ripple_total')) || 0;
+    let history = JSON.parse(localStorage.getItem('ripple_history')) || [];
 
-  function updateUI() {
-    const pct = Math.round((totalLogged / GOAL) * 100);
-    const rem = Math.max(GOAL - totalLogged, 0);
+    function updateUI() {
+        const pct = Math.min(Math.round((totalLogged / GOAL) * 100), 100);
+        const rem = Math.max(GOAL - totalLogged, 0);
 
-    // Wave
-    const fill    = document.getElementById('waveFill');
-    const shimmer = document.getElementById('waveShimmer');
-    if (fill)    fill.style.height    = pct + '%';
-    if (shimmer) shimmer.style.bottom = pct + '%';
+        // Update Wave
+        const fill = document.getElementById('waveFill');
+        if (fill) fill.style.height = pct + '%';
 
-    // Text labels
-    setText('pctText',   pct + '%');
-    setText('mlText',    totalLogged.toLocaleString() + ' ml');
-    setText('remStat',   rem > 0 ? rem + ' ml' : 'Goal!');
-    setText('glassStat', glassCount);
+        // Update Text
+        document.getElementById('pctText').textContent = pct + '%';
+        document.getElementById('mlText').textContent = totalLogged.toLocaleString() + ' ml';
+        document.getElementById('remStat').textContent = rem > 0 ? rem.toLocaleString() + ' ml' : 'Goal Met!';
+        document.getElementById('glassStat').textContent = Math.floor(totalLogged / LOG_AMT);
 
-    // Goal reached styling
-    if (pct >= 100) {
-      const pctEl = document.getElementById('pctText');
-      if (pctEl) pctEl.classList.add('goal-reached');
+        localStorage.setItem('ripple_total', totalLogged);
+        localStorage.setItem('ripple_history', JSON.stringify(history));
+        renderHistory();
     }
-  }
 
-  function addLogEntry() {
-    const now = new Date();
-    const t   = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const list = document.getElementById('logList');
-    if (!list) return;
-
-    const entry = document.createElement('div');
-    entry.className = 'log-entry new-entry';
-    entry.innerHTML = `<span>${LOG_AMT} ml</span><span>${t}</span>`;
-    list.insertBefore(entry, list.firstChild);
-
-    // Keep only 4 entries
-    while (list.children.length > 4) {
-      list.removeChild(list.lastChild);
+    function renderHistory() {
+        const list = document.getElementById('logList');
+        if (!list) return;
+        list.innerHTML = history.slice(0, 5).map(item => `
+            <div class="log-entry">
+                <span style="color: #00B4D8;">+ ${item.amount} ml</span>
+                <span style="color: #8892A4;">${item.time}</span>
+            </div>
+        `).join('');
     }
-  }
 
-  function logWater() {
-    if (totalLogged >= GOAL) return;
-    totalLogged  = Math.min(totalLogged + LOG_AMT, GOAL);
-    glassCount  += 1;
-    addLogEntry();
-    updateUI();
-  }
+    function logWater() {
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        totalLogged += LOG_AMT;
+        history.unshift({ amount: LOG_AMT, time: timeStr });
+        
+        if (window.navigator.vibrate) window.navigator.vibrate(15);
+        updateUI();
+    }
 
-  function setText(id, val) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = val;
-  }
-
-  function init() {
-    const btn = document.getElementById('logBtn');
-    if (btn) btn.addEventListener('click', logWater);
-    updateUI();
-  }
-
-  document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('logBtn').addEventListener('click', logWater);
+        updateUI();
+    });
 })();
