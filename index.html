@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent">
     <meta name="theme-color" content="#06090F">
     <title>RIPPLE</title>
     <link rel="manifest" href="manifest.json">
@@ -12,54 +14,53 @@
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/animations.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header class="app-header">
-            <h1 class="app-name">RIPPLE</h1>
-        </header>
+      <header class="app-header">
+        <h1 class="app-name">RIPPLE</h1>
+      </header>
 
-        <main class="main-grid">
-            <div class="phone-ui">
-                <div class="wave-wrap">
-                    <div class="wave-circle">
-                        <div class="wave-fill" id="waveFill">
-                            <svg class="wave-svg" width="280" height="18" viewBox="0 0 280 18">
-                                <path d="M0 9 Q35 0 70 9 Q105 18 140 9 Q175 0 210 9 Q245 18 280 9 L280 18 L0 18 Z" fill="#005C8A" />
-                            </svg>
-                            <div class="wave-body"></div>
-                        </div>
-                        <div class="wave-label">
-                            <div class="wave-pct" id="pctText">0%</div>
-                            <div class="wave-ml" id="mlText">0 ml</div>
-                            <div class="wave-goal">of 2,500 ml</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="quick-stats">
-                    <div class="stat-item">
-                        <div class="stat-val" id="remStat">2,500 ml</div>
-                        <div class="stat-lbl">remaining</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-val" id="glassStat">0</div>
-                        <div class="stat-lbl">glasses</div>
-                    </div>
-                </div>
-
-                <div class="log-btn-wrap">
-                    <button class="log-btn" id="logBtn">+ Log 250 ml</button>
-                </div>
-
-                <div class="history-section">
-                    <div class="recent-label">RECENT ACTIVITY</div>
-                    <div id="logList"></div>
-                </div>
+      <main class="tracker-main">
+        <div class="wave-container">
+          <div class="wave-circle">
+            <div class="wave-fill" id="waveFill">
+              <svg class="wave-svg" width="280" height="18"
+                viewBox="0 0 280 18">
+                <path
+                  d="M0 9 Q35 0 70 9 Q105 18 140 9 Q175 0 210 9 Q245 18 280 9 L280 18 L0 18 Z"
+                  fill="#005C8A" />
+              </svg>
+              <div class="wave-body"></div>
             </div>
-        </main>
+            <div class="wave-label">
+              <div class="wave-pct" id="pctText">0%</div>
+              <div class="wave-ml" id="mlText">0 ml</div>
+              <div class="wave-goal">of 2,500 ml</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-val" id="remStat">2,500 ml</span>
+            <span class="stat-lbl">remaining</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-val" id="glassStat">0</span>
+            <span class="stat-lbl">glasses</span>
+          </div>
+        </div>
+
+        <div class="action-area">
+          <button class="log-btn" id="logBtn">+ Log 250 ml</button>
+        </div>
+
+        <div class="history-list" id="logList">
+        </div>
+      </main>
     </div>
     <script src="js/data.js"></script>
     <script src="js/phone.js"></script>
-</body>
+  </body>
 </html>

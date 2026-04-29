@@ -1,20 +1,19 @@
 .wave-circle {
     position: relative;
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     overflow: hidden;
     background: #0B1220;
     border: 2px solid #1A2A3F;
-    margin: 30px 0;
+    margin-bottom: 30px;
 }
 
 .wave-fill {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 0%;
+    bottom: 0; width: 100%;
     background: #005C8A;
-    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 0.8s ease;
 }
 
 .wave-label {
@@ -24,40 +23,43 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 2;
+    z-index: 5;
 }
 
-.wave-pct { font-size: 42px; color: #E8EDF5; font-weight: bold; }
-.wave-ml { color: #00B4D8; margin-top: 5px; }
+.wave-pct { font-size: 38px; color: #fff; font-weight: bold; }
+.wave-ml { color: #00B4D8; font-size: 14px; }
 
-.log-btn {
-    background: #007EA8;
-    color: white;
-    border: none;
-    padding: 18px 40px;
-    border-radius: 30px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-.log-btn:active { transform: scale(0.95); background: #005C8A; }
-
-.quick-stats {
+.stats-row {
     display: flex;
-    gap: 40px;
+    gap: 50px;
     margin-bottom: 40px;
 }
 
-.stat-item { text-align: center; }
-.stat-val { color: #E8EDF5; font-size: 18px; font-weight: 500; }
-.stat-lbl { color: #8892A4; font-size: 12px; }
+.stat-box { text-align: center; }
+.stat-val { display: block; color: #fff; font-size: 18px; }
+.stat-lbl { color: #8892A4; font-size: 11px; text-transform: uppercase; }
 
-.log-entry {
+.log-btn {
+    background: #007EA8;
+    color: #fff;
+    border: none;
+    padding: 18px 45px;
+    border-radius: 35px;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.log-btn:active { transform: scale(0.96); }
+
+.history-entry {
     display: flex;
     justify-content: space-between;
-    width: 280px;
-    padding: 10px 0;
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 0;
     border-bottom: 1px solid #1A2035;
 }
+
+.h-amt { color: #00B4D8; font-size: 14px; }
+.h-time { color: #8892A4; font-size: 12px; }

@@ -1,36 +1,39 @@
 body {
     background-color: #06090F;
-    overflow: hidden;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .container {
-    max-width: 430px;
+    max-width: 430px; /* Mobile width */
     height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding: 20px;
 }
 
 .app-header {
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 0 10px;
 }
 
 .app-name {
     color: #E8EDF5;
-    letter-spacing: 4px;
-    font-size: 20px;
+    letter-spacing: 5px;
+    font-size: 18px;
+    font-weight: 500;
 }
 
-.phone-ui {
+.tracker-main {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
-/* Hide non-app elements if they still exist */
-.features-col, .spec-grid, .divider { display: none !important; }
+/* Hide all background info from the previous product brief */
+.features-col, .section-title, .section-desc, .spec-grid, .divider, .tokens-grid, .typo-grid {
+    display: none !important;
+}
