@@ -1,0 +1,119 @@
+/* ── CONTAINER ── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── HERO ── */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-bottom: 24px;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 36px;
+}
+.hero-left { display: flex; align-items: center; gap: 16px; }
+.hero-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.app-icon {
+  width: 54px; height: 54px;
+  background: var(--accent-deep);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.app-name {
+  font-size: 26px;
+  font-weight: var(--fw-med);
+  letter-spacing: 3px;
+  color: var(--text);
+}
+.version-tag { font-size: 12px; color: var(--muted); }
+.app-sub { font-size: 13px; color: var(--muted); margin-top: 3px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+/* ── MAIN GRID ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 36px;
+}
+.phone-wrap { display: flex; flex-direction: column; align-items: flex-start; }
+.features-col { display: flex; flex-direction: column; }
+
+/* ── SPEC GRID ── */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+/* ── ALGORITHM METRICS ── */
+.alg-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+/* ── NOTIFICATIONS ── */
+.notif-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+/* ── TOKENS ── */
+.tokens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+  .phone-wrap {
+    align-items: center;
+  }
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+  .alg-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .notif-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .alg-metrics {
+    grid-template-columns: 1fr;
+  }
+  .alg-row label {
+    min-width: 80px;
+  }
+  body {
+    padding: 16px 12px 48px;
+  }
+}
