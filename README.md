@@ -1,17 +1,8 @@
-# RIPPLE — Water Tracking App · Product Brief
+# RIPPLE — Water Tracker v2
 
-> Frictionless hydration tracking · dark-first · bioluminescent UI
+> Frictionless daily hydration tracking · dark-first · bioluminescent UI
 
-A high-fidelity, interactive product brief for a minimalist water tracking app. Built with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies.
-
----
-
-## Live Demo
-
-Deploy to **GitHub Pages** for a live link:
-1. Go to your repo on GitHub
-2. Settings → Pages → Source: `main` branch → `/ (root)`
-3. Your brief will be live at `https://<your-username>.github.io/<repo-name>/`
+A fully redesigned, feature-rich water tracker app built with vanilla HTML/CSS/JS.
 
 ---
 
@@ -19,73 +10,45 @@ Deploy to **GitHub Pages** for a live link:
 
 ```
 ripple/
-├── index.html          # Main entry point
+├── index.html
+├── manifest.json
 ├── README.md
 ├── css/
-│   ├── base.css        # CSS variables, reset, body, range inputs
-│   ├── components.css  # All UI components (phone, cards, panels)
-│   ├── layout.css      # Grid, hero, responsive breakpoints
-│   └── animations.css  # Keyframes and transitions
+│   ├── base.css        # CSS tokens, reset
+│   ├── components.css  # All UI components
+│   └── animations.css  # Keyframes & transitions
 └── js/
-    ├── data.js         # All static content (features, specs, tokens)
-    ├── phone.js        # Phone mockup — tap-to-log interaction
-    ├── activeHours.js  # Active hours slider visualizer
-    ├── algorithm.js    # Nudge engine calculator
-    ├── render.js       # Renders dynamic content from data.js
-    └── main.js         # App boot / init
+    ├── data.js         # Static data / nudge strings
+    └── app.js          # Full app logic (single file)
 ```
 
 ---
 
-## Features Showcased
+## Features
 
 | Feature | Description |
 |---|---|
-| **One-tap logging** | Interactive phone mockup — tap to log 250 ml and watch the wave rise |
-| **Smart nudge engine** | Live algorithm calculator with urgency color shifts |
-| **Active hours** | Drag sliders to configure wake/sleep window |
-| **Lock-screen notifications** | Pixel-accurate mockup with contextual copy variants |
-| **Design tokens** | Full color palette, typography, spacing, and motion specs |
+| **Onboarding** | First-run setup: pick daily goal & cup size |
+| **Progress ring** | Animated circular progress with gradient fill |
+| **Smart nudge** | Contextual messages based on time of day vs progress |
+| **Quick add** | 6 preset amounts + custom input with presets |
+| **5-sec undo** | Undo any log entry within 5 seconds |
+| **Log history** | Today's drinks with delete per entry |
+| **Weekly chart** | 7-day bar chart with goal-hit coloring |
+| **Stats** | Glasses, streak, avg ml/hr, best day |
+| **Settings** | Change goal, cup size, active hours |
+| **Particle burst** | Visual feedback on every log tap |
+| **Goal celebration** | Modal + ring animation when goal is hit |
+| **PWA** | Installable on iOS/Android via manifest |
 
 ---
 
 ## Tech Stack
 
-- **HTML5** — semantic markup
-- **CSS3** — custom properties, CSS Grid, Flexbox, keyframe animations
-- **Vanilla JS** — no libraries, no build tools required
+Vanilla HTML5 · CSS3 custom properties · ES5+ JS · No dependencies
 
----
+## Deploying to GitHub Pages
 
-## Customization
-
-All content lives in `js/data.js`. To update features, specs, color tokens, or notification copy — edit that one file. The renderer (`js/render.js`) picks up the changes automatically.
-
-To change the daily water goal or default log amount:
-```js
-// js/data.js
-RIPPLE.GOAL    = 2500;  // ml
-RIPPLE.LOG_AMT = 250;   // ml per tap
-```
-
----
-
-## Deploying to GitHub (Mobile)
-
-**Option A — GitHub website (easiest on mobile):**
-1. Create a new repo on github.com
-2. Tap **Add file → Upload files**
-3. Upload all files keeping the folder structure intact
-4. Commit to `main`
-5. Enable GitHub Pages in Settings
-
-**Option B — Working Copy (iOS) / MGit (Android):**
-1. Clone your repo
-2. Copy project files in
-3. Commit + push
-
----
-
-## License
-
-Concept design — free to use for learning and portfolio purposes.
+1. Push all files to a GitHub repo
+2. Settings → Pages → Source: `main` / `/(root)`
+3. Live at `https://<username>.github.io/<repo>/`

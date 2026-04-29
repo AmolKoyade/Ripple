@@ -1,6 +1,6 @@
 {
   "short_name": "RIPPLE",
-  "name": "RIPPLE Hydration",
+  "name": "RIPPLE Hydration Tracker",
   "icons": [
     {
       "src": "https://cdn-icons-png.flaticon.com/512/3105/3105807.png",
@@ -9,8 +9,8 @@
     }
   ],
   "start_url": "./index.html",
-  "background_color": "#06090F",
+  "background_color": "#050A14",
   "display": "standalone",
   "scope": "./",
-  "theme_color": "#00B4D8"
+  "theme_color": "#4FC3F7"
 }

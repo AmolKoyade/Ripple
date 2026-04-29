@@ -1,66 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent">
-    <meta name="theme-color" content="#06090F">
-    <title>RIPPLE</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-  </head>
-  <body>
-    <div class="container">
-      <header class="app-header">
-        <h1 class="app-name">RIPPLE</h1>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#050A14">
+  <title>RIPPLE — Hydration Tracker</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
 
-      <main class="tracker-main">
-        <div class="wave-container">
-          <div class="wave-circle">
-            <div class="wave-fill" id="waveFill">
-              <svg class="wave-svg" width="280" height="18"
-                viewBox="0 0 280 18">
-                <path
-                  d="M0 9 Q35 0 70 9 Q105 18 140 9 Q175 0 210 9 Q245 18 280 9 L280 18 L0 18 Z"
-                  fill="#005C8A" />
-              </svg>
-              <div class="wave-body"></div>
-            </div>
-            <div class="wave-label">
-              <div class="wave-pct" id="pctText">0%</div>
-              <div class="wave-ml" id="mlText">0 ml</div>
-              <div class="wave-goal">of 2,500 ml</div>
-            </div>
-          </div>
-        </div>
+  <!-- ONBOARDING SCREEN -->
+  <div id="onboarding" class="screen">
+    <div class="onboard-inner">
+      <div class="onboard-icon">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <path d="M26 4C26 4 10 22 10 33a16 16 0 0032 0C42 22 26 4 26 4Z" fill="url(#dg1)"/>
+          <path d="M26 14C26 14 18 26 18 33a8 8 0 0016 0C34 26 26 14 26 14Z" fill="rgba(255,255,255,0.15)"/>
+          <defs>
+            <linearGradient id="dg1" x1="26" y1="4" x2="26" y2="52" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#4FC3F7"/>
+              <stop offset="1" stop-color="#0077B6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1 class="onboard-title">RIPPLE</h1>
+      <p class="onboard-sub">Your daily hydration companion</p>
 
-        <div class="stats-row">
-          <div class="stat-box">
-            <span class="stat-val" id="remStat">2,500 ml</span>
-            <span class="stat-lbl">remaining</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-val" id="glassStat">0</span>
-            <span class="stat-lbl">glasses</span>
-          </div>
+      <div class="onboard-card">
+        <label class="onboard-label">What's your daily goal?</label>
+        <div class="goal-selector">
+          <button class="goal-opt" data-val="1500">1.5 L</button>
+          <button class="goal-opt active" data-val="2000">2.0 L</button>
+          <button class="goal-opt" data-val="2500">2.5 L</button>
+          <button class="goal-opt" data-val="3000">3.0 L</button>
         </div>
+        <p class="onboard-hint">Recommended: 2–2.5 L for most adults</p>
+      </div>
 
-        <div class="action-area">
-          <button class="log-btn" id="logBtn">+ Log 250 ml</button>
+      <div class="onboard-card">
+        <label class="onboard-label">Default cup size</label>
+        <div class="goal-selector">
+          <button class="cup-opt" data-val="150">150 ml</button>
+          <button class="cup-opt active" data-val="250">250 ml</button>
+          <button class="cup-opt" data-val="350">350 ml</button>
+          <button class="cup-opt" data-val="500">500 ml</button>
         </div>
+      </div>
 
-        <div class="history-list" id="logList">
-        </div>
-      </main>
+      <button class="primary-btn" id="startBtn">Let's Go →</button>
     </div>
-    <script src="js/data.js"></script>
-    <script src="js/phone.js"></script>
-  </body>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="app" class="screen hidden">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="app-logo">
+          <svg width="20" height="20" viewBox="0 0 52 52" fill="none">
+            <path d="M26 4C26 4 10 22 10 33a16 16 0 0032 0C42 22 26 4 26 4Z" fill="url(#hg1)"/>
+            <defs><linearGradient id="hg1" x1="26" y1="4" x2="26" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#4FC3F7"/><stop offset="1" stop-color="#0077B6"/></linearGradient></defs>
+          </svg>
+          <span>ripple</span>
+        </div>
+      </div>
+      <div class="header-center">
+        <span class="date-label" id="dateLabel"></span>
+      </div>
+      <div class="header-right">
+        <button class="icon-btn" id="settingsBtn" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main scroll content -->
+    <main class="app-main" id="appMain">
+
+      <!-- Progress ring section -->
+      <section class="hero-section">
+        <div class="progress-ring-wrap">
+          <svg class="progress-ring" width="220" height="220" viewBox="0 0 220 220">
+            <defs>
+              <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4FC3F7"/>
+                <stop offset="100%" stop-color="#0077B6"/>
+              </linearGradient>
+            </defs>
+            <!-- Track -->
+            <circle class="ring-track" cx="110" cy="110" r="90" fill="none" stroke="#0D1F35" stroke-width="14"/>
+            <!-- Progress -->
+            <circle class="ring-prog" id="ringProg" cx="110" cy="110" r="90" fill="none"
+              stroke="url(#ringGrad)" stroke-width="14"
+              stroke-linecap="round"
+              stroke-dasharray="565.5"
+              stroke-dashoffset="565.5"
+              transform="rotate(-90 110 110)"/>
+          </svg>
+          <div class="ring-center">
+            <div class="ring-ml" id="ringMl">0</div>
+            <div class="ring-unit">ml today</div>
+            <div class="ring-pct" id="ringPct">0%</div>
+          </div>
+          <!-- Droplet particles -->
+          <div class="particles" id="particles"></div>
+        </div>
+
+        <!-- Goal & remaining pills -->
+        <div class="meta-row">
+          <div class="meta-pill">
+            <svg width="12" height="12" viewBox="0 0 52 52" fill="none"><path d="M26 4C26 4 14 20 14 30a12 12 0 0024 0C38 20 26 4 26 4Z" fill="#4FC3F7"/></svg>
+            <span id="metaGoal">Goal: 2,000 ml</span>
+          </div>
+          <div class="meta-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4FC3F7" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            <span id="metaRem">Remaining: 2,000 ml</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Smart nudge bar -->
+      <div class="nudge-bar" id="nudgeBar">
+        <div class="nudge-icon">💧</div>
+        <div class="nudge-text" id="nudgeText">Stay hydrated! Log your first drink.</div>
+      </div>
+
+      <!-- Quick add buttons -->
+      <section class="quick-add-section">
+        <h2 class="section-title">Quick Add</h2>
+        <div class="quick-grid">
+          <button class="quick-btn" data-ml="150">
+            <div class="quick-icon">☕</div>
+            <div class="quick-ml">150 ml</div>
+            <div class="quick-lbl">Espresso</div>
+          </button>
+          <button class="quick-btn featured" data-ml="250" id="defaultCupBtn">
+            <div class="quick-icon">🥛</div>
+            <div class="quick-ml">250 ml</div>
+            <div class="quick-lbl">Glass</div>
+          </button>
+          <button class="quick-btn" data-ml="350">
+            <div class="quick-icon">🍵</div>
+            <div class="quick-ml">350 ml</div>
+            <div class="quick-lbl">Mug</div>
+          </button>
+          <button class="quick-btn" data-ml="500">
+            <div class="quick-icon">🍶</div>
+            <div class="quick-ml">500 ml</div>
+            <div class="quick-lbl">Bottle</div>
+          </button>
+          <button class="quick-btn" data-ml="750">
+            <div class="quick-icon">🧴</div>
+            <div class="quick-ml">750 ml</div>
+            <div class="quick-lbl">Large</div>
+          </button>
+          <button class="quick-btn custom-btn" id="customAddBtn">
+            <div class="quick-icon">✏️</div>
+            <div class="quick-ml">Custom</div>
+            <div class="quick-lbl">Amount</div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Today's streak & stats -->
+      <section class="stats-section">
+        <h2 class="section-title">Today's Stats</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-num" id="statGlasses">0</div>
+            <div class="stat-lbl">Glasses</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="statStreak">0🔥</div>
+            <div class="stat-lbl">Day Streak</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="statAvg">—</div>
+            <div class="stat-lbl">Avg / hr</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="statBest">—</div>
+            <div class="stat-lbl">Best Day</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Weekly chart -->
+      <section class="chart-section">
+        <h2 class="section-title">This Week</h2>
+        <div class="week-chart" id="weekChart"></div>
+      </section>
+
+      <!-- Log history -->
+      <section class="log-section">
+        <div class="log-header">
+          <h2 class="section-title">Today's Log</h2>
+          <button class="text-btn" id="clearDayBtn">Clear</button>
+        </div>
+        <div class="log-list" id="logList">
+          <div class="log-empty">No drinks logged yet today.<br>Tap a quick-add button to start!</div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Undo toast -->
+    <div class="undo-toast hidden" id="undoToast">
+      <span id="undoMsg">+ 250 ml logged</span>
+      <button id="undoBtn">Undo</button>
+    </div>
+
+  </div>
+
+  <!-- SETTINGS PANEL -->
+  <div class="overlay hidden" id="settingsOverlay">
+    <div class="panel" id="settingsPanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Settings</h2>
+        <button class="icon-btn" id="closeSettings">✕</button>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Daily Goal</label>
+        <div class="goal-selector">
+          <button class="goal-opt" data-val="1500">1.5 L</button>
+          <button class="goal-opt" data-val="2000">2.0 L</button>
+          <button class="goal-opt" data-val="2500">2.5 L</button>
+          <button class="goal-opt" data-val="3000">3.0 L</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Default Cup Size</label>
+        <div class="goal-selector">
+          <button class="cup-opt" data-val="150">150 ml</button>
+          <button class="cup-opt" data-val="250">250 ml</button>
+          <button class="cup-opt" data-val="350">350 ml</button>
+          <button class="cup-opt" data-val="500">500 ml</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Active Hours</label>
+        <div class="hours-row">
+          <div class="hours-item">
+            <label class="hours-lbl">Wake up</label>
+            <select class="hours-select" id="wakeSelect"></select>
+          </div>
+          <div class="hours-item">
+            <label class="hours-lbl">Bed time</label>
+            <select class="hours-select" id="sleepSelect"></select>
+          </div>
+        </div>
+      </div>
+
+      <button class="primary-btn" id="saveSettings">Save Changes</button>
+      <button class="danger-btn" id="resetAllBtn">Reset All Data</button>
+    </div>
+  </div>
+
+  <!-- CUSTOM AMOUNT MODAL -->
+  <div class="overlay hidden" id="customOverlay">
+    <div class="panel small-panel" id="customPanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Custom Amount</h2>
+        <button class="icon-btn" id="closeCustom">✕</button>
+      </div>
+      <div class="custom-input-wrap">
+        <input type="number" class="custom-input" id="customInput" placeholder="250" min="1" max="2000">
+        <span class="custom-unit">ml</span>
+      </div>
+      <div class="custom-presets">
+        <button class="preset-chip" data-ml="100">100</button>
+        <button class="preset-chip" data-ml="200">200</button>
+        <button class="preset-chip" data-ml="400">400</button>
+        <button class="preset-chip" data-ml="600">600</button>
+        <button class="preset-chip" data-ml="1000">1000</button>
+      </div>
+      <button class="primary-btn" id="addCustomBtn">Add Water</button>
+    </div>
+  </div>
+
+  <!-- GOAL CELEBRATION -->
+  <div class="celebration hidden" id="celebration">
+    <div class="celebration-inner">
+      <div class="cel-emoji">🎉</div>
+      <div class="cel-title">Goal Reached!</div>
+      <div class="cel-sub">You hit your daily hydration goal. Amazing!</div>
+      <button class="primary-btn" id="celClose">Keep Going!</button>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
 </html>

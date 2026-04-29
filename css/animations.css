@@ -1,49 +1,62 @@
-/* ── WAVE ANIMATION ── */
-@keyframes waveFlow {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-140px); }
-}
-.wave-svg {
-  position: absolute;
-  top: -9px; left: 0;
-  display: block;
-  animation: waveFlow 2.2s linear infinite;
+/* ── KEYFRAMES ── */
+
+@keyframes particleFloat {
+  0%   { transform: translate(0,0) scale(1); opacity: .8; }
+  100% { transform: translate(var(--tx,0px), var(--ty,-30px)) scale(0); opacity: 0; }
 }
 
-/* ── LOG ENTRY APPEAR ── */
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(-4px); }
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes panelUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes celebIn {
+  from { transform: scale(.85); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
+}
+
+@keyframes logSlide {
+  from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.log-entry.new-entry {
-  animation: fadeSlideIn .35s ease forwards;
+
+@keyframes ringPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(79,195,247,.4)); }
+  50%       { filter: drop-shadow(0 0 18px rgba(79,195,247,.8)); }
 }
 
-/* ── GOAL PULSE ── */
-@keyframes goalPulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: .65; }
-}
-.wave-pct.goal-reached {
-  color: var(--accent);
-  animation: goalPulse 1.8s ease-in-out 3;
+.ring-prog.goal-hit {
+  stroke: var(--green);
+  animation: ringPulse 1.5s ease-in-out 3;
 }
 
-/* ── METRIC VALUE UPDATE ── */
-@keyframes nudgeUp {
-  0%   { transform: translateY(0); }
-  40%  { transform: translateY(-4px); }
-  100% { transform: translateY(0); }
-}
-.metric-val.updated {
-  animation: nudgeUp .25s ease;
+.log-entry { animation: logSlide .3s ease forwards; }
+
+@keyframes nudgePop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
 }
 
-/* ── REDUCED MOTION OVERRIDE ── */
+.nudge-bar.pop { animation: nudgePop .3s ease; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-5px); }
+  75%       { transform: translateX(5px); }
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .wave-svg          { animation: none; }
-  .log-entry.new-entry { animation: none; }
-  .wave-pct.goal-reached { animation: none; }
-  .metric-val.updated { animation: none; }
-  * { transition-duration: .01ms !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
